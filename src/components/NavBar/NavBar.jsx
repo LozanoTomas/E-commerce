@@ -2,17 +2,20 @@ import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
 import ItemListContainer from '../ItemListContainer/ItemListContainer'
+import { Link, NavLink } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <header>
+      <Link to="/">
         <h1>Radiant Weave</h1>
+      </Link>
         <nav>
             <ul>
-                <a href=""><li>Todos</li></a>
-                <a href=""><li>Remeras</li></a>
-                <a href=""><li>Jeans</li></a>
-                <a href=""><li>Buzos</li></a>
+                <li><NavLink to="/">Todos</NavLink></li>
+                <li><NavLink to="/categoria/remeras">Remeras</NavLink></li>
+                <li><NavLink to="/categoria/jeans">Jeans</NavLink></li>
+                <li><NavLink to="/categoria/buzos">Buzos</NavLink></li>
             </ul>
         </nav>
 

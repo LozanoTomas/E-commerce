@@ -1,0 +1,24 @@
+.cardProducto {
+    background-color: #c7c7c7;
+    border-radius: 10px;
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardProducto img {
+    width: 200px;
+    object-fit: contain;
+}
+
+.link {
+    background-color: rgb(153, 124, 85);
+    color: #fafafa;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+}
