@@ -19,14 +19,14 @@ const Checkout = () => {
         e.preventDefault()
 
         if(!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
-            setError("Por favor completa todos los campos o moriras maldito!")
+            setError("Por favor completa todos los campos")
             return;
         }
         
     
 
         if(email !== emailConfirmacion){
-            setError("Los campos del email no coinciden, maildito insecto")
+            setError("Los campos del email no coinciden")
             return;
         }
 
@@ -76,7 +76,7 @@ const Checkout = () => {
         })
         .catch((error) => {
             console.log("No se pudo actualizar el stock", error)
-            setError("No se puede actualziar el stock, intente en el supermercado Vital")
+            setError("No se puede actualziar el stock")
         })
     }
 
