@@ -24,5 +24,5 @@ const NavBar = () => {
   )
 }
 
-<ItemListContainer></ItemListContainer>
+
 export default NavBar
