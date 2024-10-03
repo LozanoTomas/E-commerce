@@ -6,7 +6,7 @@ const Loader = () => {
 
   return (
     <div className='loader'>
-        <Spinner animation='border' variant='danger'/>
+        <Spinner animation='border' variant='light'/>
     </div>
   )
 }

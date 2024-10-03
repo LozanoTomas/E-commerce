@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import {CarritoContext} from "../../context/CarritoContext" 
 import { db } from "../../services/config"
 import { collection, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
+import "./Checkout.css"
 
 const Checkout = () => {
     const [nombre, setNombre] = useState("")
@@ -14,18 +15,18 @@ const Checkout = () => {
 
     const {carrito, vaciarCarrito, total} = useContext(CarritoContext)
 
-
     const manejadorFormulario =(e) => {
         e.preventDefault()
 
         if(!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
-            setError("Por favor completa todos los campos!")
+            setError("Por favor completa todos los campos o moriras maldito!")
             return;
         }
         
     
+
         if(email !== emailConfirmacion){
-            setError("Los campos del email no coinciden")
+            setError("Los campos del email no coinciden, maildito insecto")
             return;
         }
 
@@ -43,25 +44,21 @@ const Checkout = () => {
             telefono,
             email
         };
-      
+
 
         Promise.all(
             orden.items.map(async (productoOrden) =>{
                 const productoRef = doc(db, "productos", productoOrden.id)
-                
                 const productoDoc = await getDoc(productoRef)
                 const stockActual = productoDoc.data().stock
-               
 
                 await updateDoc(productoRef, {
                     stock: stockActual - productoOrden.cantidad
                 })
-                
             })
         )
         .then(()=>{
 
-       
         addDoc(collection(db, "ordenes"), orden)
             .then(docRef => {
                 setOrdenId(docRef.id)
@@ -74,17 +71,17 @@ const Checkout = () => {
             })
             .catch(error => {
                 console.log("Error al crear la orden", error)
-                setError("Se produjo un error al crear la orden!")
+                setError("Se producjo un error al crear la orden!")
             })
         })
         .catch((error) => {
             console.log("No se pudo actualizar el stock", error)
-            setError("No se puede actualziar el stock")
+            setError("No se puede actualziar el stock, intente en el supermercado Vital")
         })
     }
 
   return (
-    <div>
+    <div className="check">
         <h2> Checkout:</h2>
 
         <form onSubmit={manejadorFormulario}>
